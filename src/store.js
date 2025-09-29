@@ -1,4 +1,9 @@
+import EditContact from "./pages/EditContact";
+import AddContact from "./pages/AddContact";
+
 export const initialStore=()=>{
+ 
+  
   return{
     message: null,
     todos: [
@@ -12,7 +17,22 @@ export const initialStore=()=>{
         title: "Do my homework",
         background: null,
       }
-    ]
+    ],
+    contact: [
+      {
+        name: "Mauro Nolan",
+        phone: "644153784",
+        email: "mrnolan88@gmail.com",
+        address: "Libertad 17",
+        id: 20,
+      }
+    ],
+    saludo: "Holi",
+    contactList: [],
+    
+    titleEdit: "Edit Contact",
+    titleAdd: "Add Contact",
+ 
   }
 }
 
@@ -26,6 +46,27 @@ export default function storeReducer(store, action = {}) {
         ...store,
         todos: store.todos.map((todo) => (todo.id === id ? { ...todo, background: color } : todo))
       };
+
+      case "cambiar saludo":
+        return {
+
+        }
+//Vamos a crear una funcion que se llame modificar_saludo  
+// que va a cambiar a la variable saludo cambiado con boton
+        case modificar_saludo:
+          //Para cambiar una variable el case tiene que retornar todo el stor
+          //con el saludo cambiado
+          return {
+            ...store,
+            saludo: "Saludo cambiado con boton"
+          }
+
+          case 'modificar_saludo_con_imput':
+            const {nuevoSaludo} =action.payload()
+            return {
+              ...store,
+              saludo: nuevoSaludo
+            }
     default:
       throw Error('Unknown action.');
   }    
