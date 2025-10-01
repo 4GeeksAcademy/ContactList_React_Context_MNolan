@@ -6,8 +6,8 @@ const EditContact = () => {
     const { store, dispatch } = useGlobalReducer();
     const {idContact} = useParams();
     //const title = "Edit Contact";
-    //console.log(idContact);
-    console.log(store.titles[0]);
+    console.log(idContact);
+    //console.log(store.titles[0]);
     
     return (
         <div className="container mt-3 text-center">

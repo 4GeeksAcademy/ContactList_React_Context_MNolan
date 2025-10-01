@@ -1,7 +1,7 @@
 import React from 'react'
 import useGlobalReducer from "../hooks/useGlobalReducer";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 export const FormContact = (props) => {
   const { store, dispatch } = useGlobalReducer();
