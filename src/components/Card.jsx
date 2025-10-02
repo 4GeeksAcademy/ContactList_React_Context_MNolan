@@ -2,9 +2,21 @@ import React from 'react'
 import useGlobalReducer from "../hooks/useGlobalReducer";  // Custom hook for accessing the global state.
 import { Link, useNavigate, useParams } from "react-router-dom";
 export const Card = (props) => {
-  const { store, dispatch } = useGlobalReducer()
+ // const { store, dispatch } = useGlobalReducer()
   const navigate = useNavigate();
   const { idContact } = useParams();
+
+  function deleteContact(idContact) {
+		return fetch(`https://playground.4geeks.com/contact/agendas/cenicerolleno/contacts/${idContact}`,{
+			method: "DELETE"
+		})
+		.then((data)=>{
+			console.log("Este es el log del DELETE", data.contacts);
+			return data.contacts;
+		})
+		.catch((error) => console.error("Error fetching contacts:", error));
+	}
+
   return (
     <div className="card">
       <div className="card-body d-flex justify-content-between align-items-center">
@@ -26,7 +38,11 @@ export const Card = (props) => {
             <i className="fa-solid fa-pen" onClick={() => {navigate(`/edit-contact/${idContact}`)}} />
             </Link>
             
-            <i className="fa-solid fa-trash-can ms-3" />
+            <i 
+                className="fa-solid fa-trash-can ms-3"
+                type="submit"
+                onClick={() => deleteContact(contact.idContact)}
+            />
           </div>
         </div>
       </div>

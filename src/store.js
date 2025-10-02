@@ -75,7 +75,7 @@ export default function storeReducer(store, action = {}) {
       };
 
 
-    case "addContact":
+    case "ADDCONTACT":
       return {
         ...store,
         contactList: [...store.contactList, action.payload]
@@ -91,7 +91,7 @@ export default function storeReducer(store, action = {}) {
       };
     }
 
-    case "deleteContact": {
+    case "DELETECONTACT": {
       const { idToDelete } = action.payload;
       return {
         ...store,

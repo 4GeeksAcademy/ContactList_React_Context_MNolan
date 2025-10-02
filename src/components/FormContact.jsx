@@ -3,45 +3,86 @@ import useGlobalReducer from "../hooks/useGlobalReducer";
 import { Link, useNavigate } from "react-router-dom";
 //import { useNavigate } from "react-router-dom";
 
-export const FormContact = (props) => {
-  const { store, dispatch } = useGlobalReducer();
+export const FormContact = ({ titulo, contact, onChange, onSubmit }) => {
+  //const { store, dispatch } = useGlobalReducer();
   //console.log(store.titles[0]);
   
   const navigate = useNavigate();
     return (
       <>
-      <h1>Algo</h1>
-             <div classNameName="container mt-5 d-flex justify-content-center">
+      
+             <div className="container mt-2 d-flex justify-content-center">
     
                <div className="card mt-5 mx-5 d-flex justify-content-center" >
 
-                 <h1 className="card-title text-center mt-5 p-3">{props.titulo}</h1>
+                 <h1 className="card-title text-center mt-2 p-3">{titulo}</h1>
                  <div className="card-body">
-                   <form>
+                   <form
+                      onSubmit={(event) => {
+                      event.preventDefault();
+                      onSubmit();
+                      }}
+                   >
                      <div className="mb-3">
-                       <label for="contactName" className="form-label">Full Name</label>
-                       <input type="text" className="form-control" id="contactName" required />
+                       <label htmlFor="contactName" className="form-label">
+                        Full Name
+                        </label>
+                       <input 
+                          type="text" 
+                          className="form-control" 
+                          id="contactName"
+                          name="name"
+                          value={contact.name}
+                          onChange={onChange}
+                          required 
+                        />
                      </div>
                      <div className="mb-3">
-                       <label for="InputEmail" className="form-label" >Email address</label>
-                       <input type="email" className="form-control" id="InputEmail" placeholder="name@example.com" />
+                       <label htmlFor="InputEmail" className="form-label" >Email address</label>
+                       <input 
+                          type="email" 
+                          className="form-control" 
+                          id="InputEmail" 
+                          name="email"
+                          value={contact.email}
+                          onChange={onChange}
+                          placeholder="name@example.com" 
+                        />
        
                      </div>
        
                      <div className="mb-3 ">
-                       <label for="phoneNumber" className="form-label">Phone Number</label>
-                       <input type="number" className="form-control no-arrows" id="phoneNumber" placeholder="000000000" min="10000000" max="999999999999" required />
+                       <label htmlFor="phoneNumber" className="form-label">Phone Number</label>
+                       <input 
+                          type="number" 
+                          className="form-control no-arrows" 
+                          id="phoneNumber" 
+                          name="phone"
+                          value={contact.phone}
+                          onChange={onChange}
+                          placeholder="000000000"  
+                          required 
+                        />
                      </div>
                      <div className="mb-3">
-                       <label for="address" className="form-label">Address</label>
-                       <input type="text" className="form-control" id="address" />
+                       <label htmlFor="address" className="form-label">Address</label>
+                       <input 
+                          type="text" 
+                          className="form-control" 
+                          id="address"
+                          name="address"
+                          value={contact.address}
+                          onChange={onChange}
+                        />
                      </div>
                      <div className="footer d-flex justify-content-center mb-3">
-                       <button type="submit" className="btn btn-primary"
-                       onClick={() => {
-                        console.log("holi, estoy guardando un contacto");
-                        navigate("/");
-                       }}>Save</button>
+                       <button 
+                          type="submit" 
+                          className="btn btn-primary"
+                          //onClick={() => {
+                            //console.log("holi, estoy guardando un contacto");
+                            /*navigate("/");
+                           }}*/>Save</button>
                      </div>
                      <Link to="/">
                        <span className="form-label">or get back to contacts</span>
