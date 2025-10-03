@@ -2,11 +2,12 @@ import { React, useState, useEffect } from "react";
 import useGlobalReducer from "../hooks/useGlobalReducer.jsx";
 import { Link, useNavigate,useParams } from "react-router-dom";
 import { Card } from "../components/Card.jsx";
-
+//import { ConfirmModal } from "./ConfirmModal";
 export const Home = () => {
 	const navigate = useNavigate();
 	const { store, dispatch } = useGlobalReducer()
 	const { idContact } = useParams();
+	
 	//console.log(store);
 	const [contact, setContact] = useState({
 		"name": "",
@@ -84,6 +85,9 @@ export const Home = () => {
 						address={c.address} />
 					
 			))}</div>
+
+			
 		</div>
+		
 	);
 }; 
