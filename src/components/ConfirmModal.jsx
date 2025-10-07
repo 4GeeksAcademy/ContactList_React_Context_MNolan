@@ -7,7 +7,7 @@ export const ConfirmModal = ({
   onConfirm, 
   onCancel 
 }) => {
-  if (!show) return null; // si no está visible, no renderiza nada
+  if (!show) return null; 
 
   return (
     <>

@@ -81,7 +81,7 @@ export default function storeReducer(store, action = {}) {
         contactList: [...store.contactList, action.payload]
       };
 
-    case "updateContact": {
+    case "EDITCONTACT": {
       const { id, updatedContact } = action.payload;
       return {
         ...store,
